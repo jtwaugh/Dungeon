@@ -31,44 +31,35 @@ class QuadEdge;
 // This extends the SFML class, which, yes, costs some memory for computation
 // This is a nominal thing so I don't get a headache; I could rewrite the code to use just int tuples
 // (And probably should)
-class Vert //: public sf::Vertex
+class Vert : public sf::Vertex
 {
 private:
 	Edge*												edge_;
-	float												x_;
-	float												y_;
 public:
-	//Vert(float x, float y);
+	Vert();
 	Vert(float x, float y);
 
 	Edge*												edge()									{ return edge_; };
 	void												AddEdge(Edge* edge)						{ edge_ = edge; };
 
-	//float												x()										{ return position.x; };
-	//float												y()										{ return position.y; };
-	//float												lengthsquared()							{ return position.x * position.x + position.y * position.y; };
+	float												x()										{ return position.x; };
+	float												y()										{ return position.y; };
+	float												lengthsquared()							{ return position.x * position.x + position.y * position.y; };
 
-	int													x()										{ return x_; };
-	int													y()										{ return y_; };
-	int													lengthsquared()							{ return x_ * x_ + y_ * y_; };
-	
-	//sf::Vector2f										getPosition()							{ return position; };
+	sf::Vector2f										getPosition()							{ return position; };
 };
 
 //	--------------------------------------------------------
 //	Constructor
 //	--------------------------------------------------------
 
-/*
+Vert::Vert()
+{
+}
+
 Vert::Vert(float x, float y)
 {
 	position = sf::Vector2f(x, y);
-}
-*/
-
-Vert::Vert(float x, float y) : x_(x), y_(y)
-{
-
 }
 
 //	--------------------------------------------------------

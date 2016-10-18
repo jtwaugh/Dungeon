@@ -16,6 +16,8 @@
 #include "linal.h"
 #include "quadedge.h"
 #include "math.h"
+#include "rect.h"
+
 #include <tuple>
 #include <vector>
 #include <iostream>
@@ -69,8 +71,9 @@ private:
 	EdgePartition							Triangulate(const PointsList& points);
 
 public:
-	// Constructor
+	// Constructors
 	Delaunay(int n);
+	Delaunay(std::vector<std::vector<float>>& buffer);
 
 	// Triangulate the vertices
 	QuadList								GetTriangulation();
@@ -83,7 +86,7 @@ public:
 };
 
 //	--------------------------------------------------------
-//	Constructor
+//	Constructors
 //	--------------------------------------------------------
 
 Delaunay::Delaunay(int n)
@@ -91,6 +94,17 @@ Delaunay::Delaunay(int n)
 	// For the moment, we generate the vertices
 	edges_ = QuadList();
 	GenerateRandomVerts(n);
+}
+
+Delaunay::Delaunay(std::vector<std::vector<float>>& buffer)
+{
+	edges_ = QuadList();
+
+	// Turn it into Verts for the convenience of our algorithm
+	for (int i = 0; i < buffer.size(); i++)
+	{
+		vertices_.push_back(new Vert(buffer[i][0], buffer[i][1]));
+	}
 }
 
 void Delaunay::GenerateRandomVerts(int n)
@@ -140,7 +154,7 @@ void Delaunay::Kill(Edge* edge)
 //	--------------------------------------------------------
 
 // Split the list of vertices in the center
-// Thsi relies on the assumption that they're ordered lexicographically
+// This relies on the assumption that they're ordered lexicographically
 PointsPartition Delaunay::SplitPoints(const PointsList& points)
 {
 	int halfway = (points.size() / 2);
@@ -443,8 +457,6 @@ EdgeList Delaunay::GetMST()
 			}
 		}
 	} 
-
-
 
 	return mst;
 }

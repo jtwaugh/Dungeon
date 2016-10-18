@@ -11,10 +11,51 @@
 //	Include
 //	--------------------------------------------------------
 
+#include "tileset.h"
 #include "edge.h"
 
 //	--------------------------------------------------------
-//	Bunch of functions
+//	Some definitions
+//	--------------------------------------------------------
+
+#define M_PI			3.14159265358979323846264
+#define WINDOW_WIDTH	512
+#define WINDOW_HEIGHT	512
+
+//	--------------------------------------------------------
+//	Enum for reasoning the drift vectors
+//	--------------------------------------------------------
+
+enum Direction { UP, DOWN, LEFT, RIGHT, STAY };
+
+//	--------------------------------------------------------
+//	Math utility functions
+//	--------------------------------------------------------
+
+template <typename T> int sgn(T val)
+{
+	return (T(0) < val) - (val < T(0));
+}
+
+// We assume that tiles are placed about 0, 0
+// This maps tile coords to screen coords
+Vert FromTileCoords(Vert& v)
+{
+	return Vert(v.x() * TILE_SIZE + WINDOW_WIDTH / 2, v.y() * TILE_SIZE + WINDOW_HEIGHT / 2);
+}
+
+sf::Vector2f FromTileCoords(sf::Vector2f& v)
+{
+	return sf::Vector2f(v.x * TILE_SIZE + WINDOW_WIDTH / 2, v.y * TILE_SIZE + WINDOW_HEIGHT / 2);
+}
+
+sf::Vector2f FromTileCoords(float x, float y)
+{
+	return sf::Vector2f(x * TILE_SIZE + WINDOW_WIDTH / 2, y * TILE_SIZE + WINDOW_HEIGHT / 2);
+}
+
+//	--------------------------------------------------------
+//	Bunch of linear algebra functions
 //	--------------------------------------------------------
 
 double Det3x3(double* col_0, double* col_1, double* col_2)
