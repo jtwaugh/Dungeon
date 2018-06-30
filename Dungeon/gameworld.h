@@ -54,7 +54,7 @@ private:
 
 public:
 	GameWorld();
-	GameWorld(Tileset& _tileset, int n);
+	GameWorld(Tileset& _tileset, Dungeon& _dungeon);
 
 	void Update();
 	void Render(sf::RenderWindow& window);
@@ -69,7 +69,7 @@ GameWorld::GameWorld()
 	camera_ = Camera();
 }
 
-GameWorld::GameWorld(Tileset& _tileset, int n) : map_(Map(_tileset, Dungeon(n)))
+GameWorld::GameWorld(Tileset& _tileset, Dungeon& _dungeon) : map_(_tileset, _dungeon)
 {
 	camera_ = Camera();
 }
@@ -95,7 +95,7 @@ void GameWorld::UpdateCamera()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		if (camera_.y + WINDOW_HEIGHT < map_.height() * TILE_SIZE)
+		if (camera_.y + WINDOW_HEIGHT / 2 < map_.height() * TILE_SIZE)
 		{
 			camera_.y += CAMERA_SPEED;
 		}
@@ -110,7 +110,7 @@ void GameWorld::UpdateCamera()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		if (camera_.x + WINDOW_WIDTH < map_.width() * TILE_SIZE)
+		if (camera_.x + WINDOW_WIDTH / 2 < map_.width() * TILE_SIZE)
 		{
 			camera_.x += CAMERA_SPEED;
 		}

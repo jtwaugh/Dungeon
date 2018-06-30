@@ -19,8 +19,8 @@
 //	--------------------------------------------------------
 
 #define M_PI			3.14159265358979323846264
-#define WINDOW_WIDTH	512
-#define WINDOW_HEIGHT	512
+#define WINDOW_WIDTH	800	
+#define WINDOW_HEIGHT	600
 
 //	--------------------------------------------------------
 //	Enum for reasoning the drift vectors

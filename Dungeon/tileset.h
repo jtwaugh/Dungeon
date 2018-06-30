@@ -34,7 +34,7 @@ private:
 	sf::Texture	set_;
 
 public:
-	// Gonna hardcode some tile positions here
+	// Harcoded tile positions
 	static const std::uint16_t WALL_TOPLEFT					= 0;
 	static const std::uint16_t WALL_TOP						= WALL_TOPLEFT + 1;
 	static const std::uint16_t WALL_TOPRIGHT				= WALL_TOPLEFT + 2;
@@ -52,7 +52,7 @@ public:
 	static const std::uint16_t WALL_TL_BR					= WALL_TR_BL + 1;
 	static const std::uint16_t WALL_TEXTURE					= 5;
 
-	Tileset::Tileset();
+	Tileset();
 	Tileset(sf::Image& image);
 
 	sf::Sprite getTile(int tileIndex, sf::Vector2f pos);

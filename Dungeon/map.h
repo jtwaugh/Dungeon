@@ -34,7 +34,7 @@ private:
 	// Essential data: bounds, tileset, and tiles
 	int							width_;
 	int							height_;
-	Tileset&					tileset_;
+	Tileset*					tileset_;
 	std::uint16_t*				tiles_;
 
 	// Utility functions
@@ -62,7 +62,7 @@ public:
 	// Accessors
 	int							width()		{ return width_; };
 	int							height()	{ return height_; };
-	Tileset&					tileset()	{ return tileset_; };
+	Tileset&					tileset()	{ return *tileset_; };
 
 	// Constructors
 	Map();
@@ -83,22 +83,21 @@ public:
 //	Constructors
 //	--------------------------------------------------------
 
-//Default
-Map::Map() : tileset_(Tileset())
+Map::Map()
 {
-
+	
 }
 
 // Direct construction
 Map::Map(int _width, int _height, Tileset& _tileset, std::uint16_t* _tiles)
 	: width_(_width),
 	height_(_height),
-	tileset_(_tileset),
+	tileset_(&_tileset),
 	tiles_(_tiles)
 {}
 
 // Builds a map from a dungeon
-Map::Map(Tileset& _tileset, Dungeon& _dungeon) : tileset_(_tileset)
+Map::Map(Tileset& _tileset, Dungeon& _dungeon) : tileset_(&_tileset)
 {
 	auto rooms = _dungeon.GetRooms();
 	auto corridors = _dungeon.GetCorridors();
@@ -152,7 +151,7 @@ sf::Sprite Map::GetTileAt(int x, int y)
 	sf::Vector2f pos(TILE_SIZE * x, TILE_SIZE * y);
 	std:uint16_t index = tiles_[x + y * width_];
 
-	return tileset_.getTile(index, pos);
+	return tileset_->getTile(index, pos);
 }
 
 std::uint16_t Map::GetTileTypeAt(int x, int y)
