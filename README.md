@@ -3,4 +3,4 @@ A dungeon generator built with my implementation of the Delaunay triangulation a
 
 The program looks like the below image. WASD mov the camera to inspect the dungeon.
 
-![alt text](dungeon/resource/dungeon.png)
+![alt text](https://github.com/jtwaugh/Dungeon/blob/master/Dungeon/resource/dungeon.png)
