@@ -18,7 +18,7 @@
 //	Some definitions
 //	--------------------------------------------------------
 
-#define M_PI			3.14159265358979323846264
+#define M_PI 3.14159265358979323846264
 
 int WINDOW_WIDTH = 800;
 int WINDOW_HEIGHT = 600;
@@ -118,10 +118,12 @@ bool InCircle(Vert* a, Vert* b, Vert* c, Vert* d)
 	// This reduces to a linear algebraic question; see Guibas and Stolfi
 
 	// Set up our matrix
-	double m[4][4] = {	{ a->x(), b->x(), c->x(), d->x() },
-						{ a->y(), b->y(), c->y(), d->y() },
-						{ a->lengthsquared(), b->lengthsquared(), c->lengthsquared(), d->lengthsquared() },
-						{ 1, 1, 1, 1 } };
+	double m[4][4] = {	
+		{ a->x(), b->x(), c->x(), d->x() },
+		{ a->y(), b->y(), c->y(), d->y() },
+		{ a->lengthsquared(), b->lengthsquared(), c->lengthsquared(), d->lengthsquared() },
+		{ 1, 1, 1, 1 } 
+	};
 
 	// Return true if our determinant is positive
 	return Det4x4(m[0], m[1], m[2], m[3]) > 0;
@@ -142,7 +144,11 @@ bool CCW(Vert* a, Vert* b, Vert* c)
 	float c_y = c->y();
 
 	// Set up a matrix
-	double m[3][3] = { { a_x, b_x, c_x }, { a_y, b_y, c_y }, { 1, 1, 1 } };
+	double m[3][3] = { 
+		{ a_x, b_x, c_x }, 
+		{ a_y, b_y, c_y }, 
+		{ 1, 1, 1 } 
+	};
 
 	// Return true if our determinant is positive
 	return Det3x3(m[0], m[1], m[2]) > 0;

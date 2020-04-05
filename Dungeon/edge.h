@@ -14,8 +14,9 @@
 //	Include
 //	--------------------------------------------------------
 
-#include <SFML/Graphics.hpp>
 #include <memory>
+
+#include <SFML/Graphics.hpp>
 
 //	--------------------------------------------------------
 //	Forward declarations because C++
@@ -34,19 +35,19 @@ class QuadEdge;
 class Vert : public sf::Vertex
 {
 private:
-	Edge*												edge_;
+	Edge* edge_;
 public:
 	Vert();
 	Vert(float x, float y);
 
-	Edge*												edge()									{ return edge_; };
-	void												AddEdge(Edge* edge)						{ edge_ = edge; };
+	Edge* edge() { return edge_; };
+	void AddEdge(Edge* edge) { edge_ = edge; };
 
-	float												x()										{ return position.x; };
-	float												y()										{ return position.y; };
-	float												lengthsquared()							{ return position.x * position.x + position.y * position.y; };
+	float x() { return position.x; };
+	float y() { return position.y; };
+	float lengthsquared() { return position.x * position.x + position.y * position.y; };
 
-	sf::Vector2f										getPosition()							{ return position; };
+	sf::Vector2f getPosition() { return position; };
 };
 
 //	--------------------------------------------------------
@@ -70,9 +71,9 @@ Vert::Vert(float x, float y)
 class Edge
 {
 private:
-	Vert*												origin_;
-	int													index_;
-	Edge*												next_;
+	Vert* origin_;
+	int	index_;
+	Edge* next_;
 
 	friend QuadEdge;
 
@@ -81,34 +82,34 @@ public:
 	Edge();
 	~Edge();
 
-	bool												draw;
+	bool draw;
 
-	int index()											{ return index_; };
+	int index()	{ return index_; };
 
 	// An Edge object has four primitive algebraic operations; see Guibas and Stolfi
 
 	Edge* Rot();
 	Edge* InvRot();
 	Edge* Sym();
-	Edge* Onext()										{ return next_; };
+	Edge* Onext() { return next_; };
 
 	// These guys can be derived from the four primitive operations
 
-	Edge* Oprev()										{ return Rot()->Onext()->Rot(); };
-	Edge* Dnext()										{ return Sym()->Onext()->Sym(); };
-	Edge* Dprev()										{ return InvRot()->Onext()->InvRot(); };
-	Edge* Lnext()										{ return InvRot()->Onext()->Rot(); };
-	Edge* Lprev()										{ return Onext()->Sym(); };
-	Edge* Rnext()										{ return Rot()->Onext()->InvRot(); };
-	Edge* Rprev()										{ return Sym()->Onext(); };
+	Edge* Oprev() { return Rot()->Onext()->Rot(); };
+	Edge* Dnext() { return Sym()->Onext()->Sym(); };
+	Edge* Dprev() { return InvRot()->Onext()->InvRot(); };
+	Edge* Lnext() { return InvRot()->Onext()->Rot(); };
+	Edge* Lprev() { return Onext()->Sym(); };
+	Edge* Rnext() { return Rot()->Onext()->InvRot(); };
+	Edge* Rprev() { return Sym()->Onext(); };
 
 	// Accessors and mutators
 
-	Vert* origin()										{ return origin_; };
-	Vert* destination()									{ return Sym()->origin(); };
+	Vert* origin() { return origin_; };
+	Vert* destination()	{ return Sym()->origin(); };
 		
-	void setNext(Edge* next)							{ next_ = next; };
-	void setIndex(int index)							{ index_ = index; };
+	void setNext(Edge* next) { next_ = next; };
+	void setIndex(int index) { index_ = index; };
 	void setOrigin(Vert* org);
 	void setOrigin(sf::Vector2f org);
 	void setDestination(Vert* dest);

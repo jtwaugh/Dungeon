@@ -9,12 +9,15 @@
 
 //	--------------------------------------------------------
 
-#include "edge.h"
 #include <random>
-#include "math.h"
 #include <unordered_set>
 #include <iostream>
+
+#include "math.h"
+
 #include <SFML/Graphics/Rect.hpp>
+
+#include "edge.h"
 
 //	--------------------------------------------------------
 
@@ -65,7 +68,7 @@ public:
 		}
 	};
 
-	static inline Vert centroid(Rect rect)				{ return Vert(rect.left + rect.width / 2, rect.top + rect.height / 2); };
+	static inline Vert centroid(Rect rect) { return Vert(rect.left + rect.width / 2, rect.top + rect.height / 2); };
 };
 
 //	--------------------------------------------------------

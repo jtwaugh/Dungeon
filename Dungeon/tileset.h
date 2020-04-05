@@ -21,8 +21,8 @@
 //	Some definitions
 //	--------------------------------------------------------
 
-#define TILE_SIZE											16
-#define TILESET_WIDTH										16
+#define TILE_SIZE 16
+#define TILESET_WIDTH 16
 
 //	--------------------------------------------------------
 //	Main class
@@ -35,22 +35,22 @@ private:
 
 public:
 	// Harcoded tile positions
-	static const std::uint16_t WALL_TOPLEFT					= 0;
-	static const std::uint16_t WALL_TOP						= WALL_TOPLEFT + 1;
-	static const std::uint16_t WALL_TOPRIGHT				= WALL_TOPLEFT + 2;
-	static const std::uint16_t WALL_LEFT					= TILESET_WIDTH;
-	static const std::uint16_t FLOOR_TEXTURE				= TILESET_WIDTH + 1;
-	static const std::uint16_t WALL_RIGHT					= TILESET_WIDTH + 2;
-	static const std::uint16_t WALL_BOTTOMLEFT				= TILESET_WIDTH * 2;
-	static const std::uint16_t WALL_BOTTOM					= WALL_BOTTOMLEFT + 1;
-	static const std::uint16_t WALL_BOTTOMRIGHT				= WALL_BOTTOMLEFT + 2;
-	static const std::uint16_t WALL_BR_CORNER				= 3;
-	static const std::uint16_t WALL_BL_CORNER				= WALL_BR_CORNER + 1;
-	static const std::uint16_t WALL_TR_CORNER				= TILESET_WIDTH + 3;
-	static const std::uint16_t WALL_TL_CORNER				= WALL_TR_CORNER + 1;
-	static const std::uint16_t WALL_TR_BL					= TILESET_WIDTH * 2 + 3;
-	static const std::uint16_t WALL_TL_BR					= WALL_TR_BL + 1;
-	static const std::uint16_t WALL_TEXTURE					= 5;
+	static const std::uint16_t WALL_TOPLEFT = 0;
+	static const std::uint16_t WALL_TOP	= WALL_TOPLEFT + 1;
+	static const std::uint16_t WALL_TOPRIGHT = WALL_TOPLEFT + 2;
+	static const std::uint16_t WALL_LEFT = TILESET_WIDTH;
+	static const std::uint16_t FLOOR_TEXTURE = TILESET_WIDTH + 1;
+	static const std::uint16_t WALL_RIGHT = TILESET_WIDTH + 2;
+	static const std::uint16_t WALL_BOTTOMLEFT = TILESET_WIDTH * 2;
+	static const std::uint16_t WALL_BOTTOM = WALL_BOTTOMLEFT + 1;
+	static const std::uint16_t WALL_BOTTOMRIGHT = WALL_BOTTOMLEFT + 2;
+	static const std::uint16_t WALL_BR_CORNER = 3;
+	static const std::uint16_t WALL_BL_CORNER = WALL_BR_CORNER + 1;
+	static const std::uint16_t WALL_TR_CORNER = TILESET_WIDTH + 3;
+	static const std::uint16_t WALL_TL_CORNER = WALL_TR_CORNER + 1;
+	static const std::uint16_t WALL_TR_BL = TILESET_WIDTH * 2 + 3;
+	static const std::uint16_t WALL_TL_BR = WALL_TR_BL + 1;
+	static const std::uint16_t WALL_TEXTURE	 = 5;
 
 	Tileset();
 	Tileset(sf::Image& image);

@@ -31,7 +31,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	srand(time(NULL));
 
-	// Build the remdering environment
+	// Build the rendering environment
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Delaunay Dungeon");
 	window.setFramerateLimit(60);
 

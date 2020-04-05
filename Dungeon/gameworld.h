@@ -11,11 +11,11 @@
 //	Include
 //	--------------------------------------------------------
 
-#include "dungeon.h"
-#include "map.h"
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Keyboard.hpp>
+
+#include "dungeon.h"
+#include "map.h"
 
 //	--------------------------------------------------------
 //	Struct to represent the camera

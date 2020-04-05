@@ -43,32 +43,32 @@ class Delaunay
 {
 private:
 	// Components of the graph
-	PointsList								vertices_;
-	QuadList								edges_;
+	PointsList vertices_;
+	QuadList edges_;
 
 	// Helper to create a bunch of random vertices
-	void									GenerateRandomVerts(int n);
+	void GenerateRandomVerts(int n);
 
 	// Helper to cut the array of points in half
-	PointsPartition							SplitPoints(const PointsList& points);
+	PointsPartition	SplitPoints(const PointsList& points);
 
 	// Functions that create or remove edges
-	Edge*									MakeEdgeBetween(int a, int b, const PointsList& points);
-	Edge*									Connect(Edge* a, Edge* b);
-	void									Kill(Edge* edge);
+	Edge* MakeEdgeBetween(int a, int b, const PointsList& points);
+	Edge* Connect(Edge* a, Edge* b);
+	void Kill(Edge* edge);
 
 	// Functions for generating primitive shapes that we'll merge together
-	EdgePartition							LinePrimitive(const PointsList& points);
-	EdgePartition							TrianglePrimitive(const PointsList& points);
+	EdgePartition LinePrimitive(const PointsList& points);
+	EdgePartition TrianglePrimitive(const PointsList& points);
 
 	// Refactored subroutines to make the big algorithm more readable
-	Edge*									LowestCommonTangent(Edge*& left_inner, Edge*& right_inner);
-	Edge*									LeftCandidate(Edge* base_edge);
-	Edge*									RightCandidate(Edge* base_edge);
-	void									MergeHulls(Edge*& base_edge);
+	Edge* LowestCommonTangent(Edge*& left_inner, Edge*& right_inner);
+	Edge* LeftCandidate(Edge* base_edge);
+	Edge* RightCandidate(Edge* base_edge);
+	void MergeHulls(Edge*& base_edge);
 
 	// The main attraction
-	EdgePartition							Triangulate(const PointsList& points);
+	EdgePartition Triangulate(const PointsList& points);
 
 public:
 	// Constructors
@@ -76,13 +76,13 @@ public:
 	Delaunay(std::vector<std::vector<float>>& buffer);
 
 	// Triangulate the vertices
-	QuadList								GetTriangulation();
+	QuadList GetTriangulation();
 	
 	// Build the Voronoi diagram corresponding to the triangulation
-	QuadList								GetVoronoi();
+	QuadList GetVoronoi();
 
 	// Build a minimum spanning tree across the vertices
-	EdgeList								GetMST();
+	EdgeList GetMST();
 };
 
 //	--------------------------------------------------------

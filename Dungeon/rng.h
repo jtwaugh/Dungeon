@@ -23,10 +23,10 @@
 class DungeonRNG
 {
 private:
-	std::default_random_engine				generator_;		// RNG
-	std::uniform_int_distribution<int>		die_;			// A die to roll for getting room sizes
-	std::uniform_int_distribution<int>		rgb_;			// A random RGB
-	std::uniform_real_distribution<float>	angle_;			// A random angle
+	std::default_random_engine generator_;		// RNG
+	std::uniform_int_distribution<int> die_;			// A die to roll for getting room sizes
+	std::uniform_int_distribution<int> rgb_;			// A random RGB
+	std::uniform_real_distribution<float> angle_;			// A random angle
 public:
 	// Static everything
 	// Turns out the best way to do this is just to roll dice for the room dimensions
